@@ -1,4 +1,4 @@
-package com.example.notepadroom
+package com.example.notepadroom.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

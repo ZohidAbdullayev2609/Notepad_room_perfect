@@ -1,20 +1,34 @@
 package com.example.notepadroom.utils
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.notepadroom.R
+import com.example.notepadroom.databinding.FragmentNoteBottomSheetBinding
+import com.example.notepadroom.entities.Notes
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.fragment_create_note.*
 import kotlinx.android.synthetic.main.fragment_note_bottom_sheet.*
+import kotlinx.android.synthetic.main.fragment_note_bottom_sheet.layoutImage
+import kotlinx.android.synthetic.main.fragment_note_bottom_sheet.layoutWebUrl
 
 class NoteBottomSheetFragment : BottomSheetDialogFragment() {
+
+    private lateinit var binding: FragmentNoteBottomSheetBinding
+
     var selectedColor = "#171C26"
 
     companion object {
@@ -75,9 +89,10 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_note_bottom_sheet, container, false)
+    ): View {
+        binding = FragmentNoteBottomSheetBinding.inflate(inflater, container, false)
 
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -200,10 +215,34 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         layoutDeleteNote.setOnClickListener {
-            val intent = Intent("bottom_sheet_action")
-            intent.putExtra("action", "DeleteNote")
-            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
-            dismiss()
+
+            val dialog = AlertDialog.Builder(requireContext()).create()
+            val dialogView =
+                layoutInflater.inflate(R.layout.item_dialog, binding.root, false)
+
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            dialog.setView(dialogView)
+
+            dialog.show()
+
+            val yes = dialog.findViewById<AppCompatButton>(R.id.yes)
+
+            yes.setOnClickListener {
+                val intent = Intent("bottom_sheet_action")
+                intent.putExtra("action", "DeleteNote")
+                LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+                dialog.dismiss()
+                dismiss()
+                Toast.makeText(requireContext(), "Qayd o'chirildi", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            val no = dialog.findViewById<AppCompatButton>(R.id.no)
+            no.setOnClickListener {
+                dialog.dismiss()
+            }
+
         }
     }
 }

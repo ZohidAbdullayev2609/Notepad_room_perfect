@@ -1,4 +1,4 @@
-package com.example.notepadroom
+package com.example.notepadroom.fragments
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.notepadroom.R
 import com.example.notepadroom.database.NotesDatabase
 import com.example.notepadroom.entities.Notes
 import com.example.notepadroom.utils.NoteBottomSheetFragment
@@ -74,6 +75,7 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
                     etNoteTitle.setText(notes.title)
                     etNoteSubTitle.setText(notes.subTitle)
                     etNoteDesc.setText(notes.noteText)
+
                     if (notes.imgPath != "") {
                         selectedImagePath = notes.imgPath!!
                         imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
@@ -104,7 +106,8 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
             BroadcastReceiver, IntentFilter("bottom_sheet_action")
         )
 
-        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+//        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
 
         currentDate = sdf.format(Date())
         colorView.setBackgroundColor(Color.parseColor(selectedColor))
@@ -163,8 +166,6 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
 
         tvWebLink.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(etWebLink.text.toString())))
-//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(etWebLink.text.toString()))
-//            startActivity(intent)
         }
     }
 
@@ -219,10 +220,13 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
                     etNoteTitle.setText("")
                     etNoteSubTitle.setText("")
                     etNoteDesc.setText("")
-                    layoutImage.visibility = View.GONE
-                    imgNote.visibility = View.GONE
-                    tvWebLink.visibility = View.GONE
+                    layoutImage.visibility = View.VISIBLE
+                    imgNote.visibility = View.VISIBLE
+                    tvWebLink.visibility = View.VISIBLE
                     requireActivity().supportFragmentManager.popBackStack()
+
+                    Toast.makeText(requireContext(), "Qaydingiz saqlandi", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }

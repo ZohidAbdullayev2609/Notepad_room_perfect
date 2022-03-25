@@ -34,8 +34,6 @@ class Notes : Serializable {
 
 
     override fun toString(): String {
-
         return "$title : $dateTime"
-
     }
 }

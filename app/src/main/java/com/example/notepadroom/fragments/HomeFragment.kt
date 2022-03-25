@@ -1,4 +1,4 @@
-package com.example.notepadroom
+package com.example.notepadroom.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.notepadroom.R
 import com.example.notepadroom.adapter.NotesAdapter
 import com.example.notepadroom.database.NotesDatabase
 import com.example.notepadroom.entities.Notes
@@ -67,6 +68,10 @@ class HomeFragment : BaseFragment() {
 
         fabBtnCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(), false)
+        }
+
+        fabBtnWeNote.setOnClickListener {
+            replaceFragment(AboutWeFragment.newInstance(),false)
         }
 
         search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

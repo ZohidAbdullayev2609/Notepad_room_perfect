@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".CreateNoteFragment">
+    tools:context=".fragments.CreateNoteFragment">
 
     <ImageView
         android:id="@+id/imgBack"

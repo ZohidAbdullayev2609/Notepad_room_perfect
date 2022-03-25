@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ColorDarkBlack"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.HomeFragment">
 
     <TextView
         android:id="@+id/tv1"
@@ -14,7 +14,8 @@
         android:fontFamily="@font/manrope_bold"
         android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp"
-        android:text="My Notes"
+        android:text="Mening qaydlarim"
+        android:layout_marginStart="@dimen/_6sdp"
         android:textColor="@color/ColorWhite"
         android:textSize="@dimen/_15ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,16 +23,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
-        android:theme="@style/ThemeOverlay.search"
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="@dimen/_11sdp"
+        android:layout_marginHorizontal="@dimen/_100sdp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/background"
         android:iconifiedByDefault="false"
-        android:queryHint="Search your notes"
+        android:queryHint="Qaydlarni qidirish"
         android:searchIcon="@drawable/ic_search"
+        android:theme="@style/ThemeOverlay.search"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv1" />
 
@@ -44,39 +48,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_view" />
 
-    <LinearLayout
-        android:id="@+id/l1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:padding="@dimen/_10sdp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/l1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="@dimen/_10sdp"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_tick"
-            app:tint="@color/ColorWhite" />
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_tick"-->
+<!--            app:tint="@color/ColorWhite" />-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:src="@drawable/ic_image"
-            app:tint="@color/ColorWhite" />
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/_10sdp"-->
+<!--            android:layout_marginEnd="@dimen/_10sdp"-->
+<!--            android:src="@drawable/ic_image"-->
+<!--            app:tint="@color/ColorWhite" />-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_link"
-            app:tint="@color/ColorWhite" />
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_link"-->
+<!--            app:tint="@color/ColorWhite" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBtnCreateNote"
@@ -84,10 +88,22 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp"
-        android:background="@color/colorAccent"
+        android:backgroundTint="#FF9800"
         android:src="@drawable/ic_add"
         android:tint="@color/ColorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBtnWeNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:backgroundTint="#FF9800"
+        android:src="@drawable/ic_baseline_person_pin_24"
+        android:tint="@color/ColorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
